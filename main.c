@@ -28,3 +28,57 @@ void addVertex(Graph *graph, char vertex) {
         graph->vertices[graph->numVertices++] = vertex;
     }
 }
+void addEdge(Graph *graph, char start, char end, int weight) {
+    int startIndex = -1;
+    int endIndex = -1;
+    
+    int i;
+    for (i = 0; i < graph->numVertices; i++) {
+        if (graph->vertices[i] == start) {
+            startIndex = i;
+        }
+        if (graph->vertices[i] == end) {
+            endIndex = i;
+        }
+    }
+    
+    if (startIndex != -1 && endIndex != -1) {
+        graph->adjMatrix[startIndex][endIndex] = weight;
+        graph->adjMatrix[endIndex][startIndex] = weight; // Se o grafo for não direcionado
+    }
+}
+
+void displayGraph(Graph *graph) {
+    int i, j;
+    
+    printf("Vertices: ");
+    for (i = 0; i < graph->numVertices; i++) {
+        printf("%c ", graph->vertices[i]);
+    }
+    printf("\n");
+    
+    printf("Edges:\n");
+    for (i = 0; i < graph->numVertices; i++) {
+        for (j = 0; j < graph->numVertices; j++) {
+            if (graph->adjMatrix[i][j] != 0) {
+                printf("%c - %d - %c \n", graph->vertices[i], graph->adjMatrix[i][j] ,graph->vertices[j]);
+            }
+        }
+    }
+}
+
+void addEdgesFromFile(Graph *graph, const char *filename) {
+    FILE *file = fopen(filename, "r");
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo %s.\n", filename);
+        return;
+    }
+    
+    char start, end;
+    int weight;
+    while (fscanf(file, " %c %c %d", &start, &end, &weight) == 3) {
+        addEdge(graph, start, end, weight);
+    }
+    
+    fclose(file);
+}
