@@ -89,6 +89,11 @@ int main() {
     
     // Adiciona vértices
     int i;
+
+    int exit = 0;
+
+    while(exit != 1) {
+    
     for (i = 0; i < MAX_VERTICES; i++) {
         addVertex(&graph, 'A' + i);
     }
@@ -97,6 +102,11 @@ int main() {
     addEdgesFromFile(&graph, "grafo.txt");
     
     displayGraph(&graph);
+
+    printf("Digite (1) para Sair: ");
+    scanf("%d", &exit);
+    
+    }
     
     return 0;
 }
