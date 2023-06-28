@@ -1,0 +1,14 @@
+A B 33
+A C 44
+A D 22
+A E 17
+A F 11
+B C 19
+B D 45
+B E 7
+B F 77
+C E 30
+C F 24
+D E 10
+D F 5
+E F 9
