@@ -57,7 +57,7 @@ void displayGraph(Graph *graph) {
     }
     printf("\n");
     
-    printf("Edges:\n");
+    printf("Arestas:\n");
     for (i = 0; i < graph->numVertices; i++) {
         for (j = 0; j < graph->numVertices; j++) {
             if (graph->adjMatrix[i][j] != 0) {
