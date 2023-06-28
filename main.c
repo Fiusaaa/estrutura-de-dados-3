@@ -82,3 +82,21 @@ void addEdgesFromFile(Graph *graph, const char *filename) {
     
     fclose(file);
 }
+int main() {
+    Graph graph;
+    
+    initGraph(&graph);
+    
+    // Adiciona vértices
+    int i;
+    for (i = 0; i < MAX_VERTICES; i++) {
+        addVertex(&graph, 'A' + i);
+    }
+    
+    // Adiciona arestas a partir do arquivo "grafo.txt"
+    addEdgesFromFile(&graph, "grafo.txt");
+    
+    displayGraph(&graph);
+    
+    return 0;
+}
