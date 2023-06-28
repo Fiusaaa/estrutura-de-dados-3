@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
-#define MAX_VERTICES 10
+#define MAX_VERTICES 6
 
 typedef struct {
     int numVertices;
@@ -28,67 +27,4 @@ void addVertex(Graph *graph, char vertex) {
     if (graph->numVertices < MAX_VERTICES) {
         graph->vertices[graph->numVertices++] = vertex;
     }
-}
-
-void addEdge(Graph *graph, char start, char end) {
-    int startIndex = -1;
-    int endIndex = -1;
-    
-    int i;
-    for (i = 0; i < graph->numVertices; i++) {
-        if (graph->vertices[i] == start) {
-            startIndex = i;
-        }
-        if (graph->vertices[i] == end) {
-            endIndex = i;
-        }
-    }
-    
-    if (startIndex != -1 && endIndex != -1) {
-        graph->adjMatrix[startIndex][endIndex] = 1;
-        graph->adjMatrix[endIndex][startIndex] = 1; // Se o grafo for não direcionado
-    }
-}
-
-void displayGraph(Graph *graph) {
-    int i, j;
-    
-    printf("Vertices: ");
-    for (i = 0; i < graph->numVertices; i++) {
-        printf("%c ", graph->vertices[i]);
-    }
-    printf("\n");
-    
-    printf("Edges:\n");
-    for (i = 0; i < graph->numVertices; i++) {
-        for (j = 0; j < graph->numVertices; j++) {
-            if (graph->adjMatrix[i][j] == 1) {
-                printf("%c -- %c\n", graph->vertices[i], graph->vertices[j]);
-            }
-        }
-    }
-}
-
-int main() {
-    Graph graph;
-    
-    initGraph(&graph);
-    
-    // Adiciona vértices
-    int i;
-    for (i = 0; i < MAX_VERTICES; i++) {
-        addVertex(&graph, 'A' + i);
-    }
-    
-    // Adiciona arestas aleatórias
-    srand(time(NULL));
-    for (i = 0; i < MAX_VERTICES * 2; i++) {
-        char start = 'A' + rand() % MAX_VERTICES;
-        char end = 'A' + rand() % MAX_VERTICES;
-        addEdge(&graph, start, end);
-    }
-    
-    displayGraph(&graph);
-    
-    return 0;
 }
