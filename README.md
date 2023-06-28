@@ -4,6 +4,6 @@ O seguinte codigo tem o objetivo de atender as tarefas requisitadas na pratica 4
 
 codigo.c - É o codigo principal escrito em c. compile - É o executavel criado em linux. Makefile - É o meu compilador onde será criado o executável. compile.exe - É o executavel.
 
-grafo.txt - E o arquivo de texto onde tera os valores dos pesos de cada arestas.
+grafo.txt - E o arquivo que será lido onde tera os valores dos pesos de cada arestas.
 
 Regras De Uso ////////// Baixe todos os arquivos em uma pasta. Execute o arquivo dentro da pasta
